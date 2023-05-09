@@ -6,6 +6,7 @@ import Hero from "../components/Hero.astro";
 import type { iconPaths } from "../components/IconPaths";
 import Icon from "../components/Icon.astro";
 import Grid from "../components/Grid.astro";
+import CallToAction from "../components/CallToAction.astro";
 ---
 
 <BaseLayout
@@ -18,12 +19,12 @@ import Grid from "../components/Grid.astro";
 				title="About"
 				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
 			>
-				<img
+				<!-- <img
 					width="1553"
 					height="873"
 					src="/assets/at-work.jpg"
 					alt="Jeanine White at work with a colleague"
-				/>
+				/> -->
 			</Hero>
 			<section>
 				<h2 class="section-title">Personal infos</h2>
@@ -75,7 +76,14 @@ import Grid from "../components/Grid.astro";
 						
 					</ul>
 				</div>
+
 				</div>
+				<div class="cta">
+				<CallToAction href="/download/">
+					View All
+					<Icon icon="arrow-right" size="1.2em" />
+				</CallToAction>
+			</div>
 			</section>
 
 			<section>
