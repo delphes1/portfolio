@@ -1,11 +1,17 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
 
-import ContactCTA from '../components/ContactCTA.astro';
-import Hero from '../components/Hero.astro';
+import ContactCTA from "../components/ContactCTA.astro";
+import Hero from "../components/Hero.astro";
+import type { iconPaths } from "../components/IconPaths";
+import Icon from "../components/Icon.astro";
+import Grid from "../components/Grid.astro";
 ---
 
-<BaseLayout title="About | Jeanine White" description="About Jeanine White Lorem Ipsum">
+<BaseLayout
+	title="About | Jeanine White"
+	description="About Jeanine White Lorem Ipsum"
+>
 	<div class="stack gap-20">
 		<main class="wrapper about">
 			<Hero
@@ -19,27 +25,87 @@ import Hero from '../components/Hero.astro';
 					alt="Jeanine White at work with a colleague"
 				/>
 			</Hero>
+			<section>
+				<h2 class="section-title">Personal infos</h2>
+				<div class="content">
+					<div class="personal-info">
+					<ul class="about-list">
+						<li class="info">
+							<span class="title">first name:</span><span
+								class="value"
+								>Delphes</span>
+						</li><li class="info">
+							<span class="title">Age:</span><span
+							class="value"
+								>25 Years</span>
+						</li><li class="info">
+							<span class="title">Address:</span><span
+							class="value"
+								>Toulouse</span>
+						</li><li class="info">
+							<span class="title">phone:</span><span
+							class="value"
+								>+33750476361</span>
+						</li><li class="info">
+							<span class="title">langages:</span><span
+							class="value"
+								>French, English, Spanish, Turkish, Arabic</span>
+						</li>
+					</ul>
+					<ul class="about-list">
+						<li class="info">
+							<span class="title">last name:</span><span
+							class="value"
+								>Jabri</span>
+						</li><li class="info">
+							<span class="title">Nationality:</span><span
+							class="value"
+								>French</span>
+						</li>
+						<li class="info">
+							<span class="title">Driver's license:</span><span
+							class="value"
+								>Ok</span>
+						</li>
+						<li class="info">
+							<span class="title">Email:</span><span
+							class="value"
+								>delphes5@outlook.fr</span>
+						</li>
+						
+					</ul>
+				</div>
+				</div>
+			</section>
 
 			<section>
 				<h2 class="section-title">Background</h2>
 				<div class="content">
 					<p>
-						Lorem ipsum dolor sit amet, <a href="https://astro.build/">Astro</a> makes people happy.
-						Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin nibh nisl condimentum
-						id venenatis a condimentum vitae. Dapibus ultrices in iaculis nunc. Arcu odio ut sem nulla
-						pharetra diam sit amet. Diam quis enim lobortis scelerisque fermentum dui faucibus in ornare.
+						Lorem ipsum dolor sit amet, <a
+							href="https://astro.build/">Astro</a
+						> makes people happy. Sed do eiusmod tempor incididunt ut
+						labore et dolore magna aliqua. Proin nibh nisl condimentum
+						id venenatis a condimentum vitae. Dapibus ultrices in iaculis
+						nunc. Arcu odio ut sem nulla pharetra diam sit amet. Diam
+						quis enim lobortis scelerisque fermentum dui faucibus in
+						ornare.
 					</p>
 					<p>
-						Arcu dui vivamus arcu felis bibendum ut tristique et egestas. Eget gravida cum sociis
-						natoque penatibus. Cras fermentum odio eu feugiat pretium nibh. Proin nibh nisl
-						condimentum id venenatis. Porta nibh venenatis cras sed felis eget velit. Id diam vel
-						quam elementum pulvinar etiam non.
+						Arcu dui vivamus arcu felis bibendum ut tristique et
+						egestas. Eget gravida cum sociis natoque penatibus. Cras
+						fermentum odio eu feugiat pretium nibh. Proin nibh nisl
+						condimentum id venenatis. Porta nibh venenatis cras sed
+						felis eget velit. Id diam vel quam elementum pulvinar
+						etiam non.
 					</p>
 					<p>
-						Ultrices tincidunt arcu non sodales neque sodales ut. Sed enim ut sem viverra aliquet
-						eget sit amet. Lacus luctus accumsan tortor posuere ac ut consequat semper viverra.
-						Viverra accumsan in nisl nisi scelerisque eu ultrices. In massa tempor nec feugiat nisl
-						pretium fusce.
+						Ultrices tincidunt arcu non sodales neque sodales ut.
+						Sed enim ut sem viverra aliquet eget sit amet. Lacus
+						luctus accumsan tortor posuere ac ut consequat semper
+						viverra. Viverra accumsan in nisl nisi scelerisque eu
+						ultrices. In massa tempor nec feugiat nisl pretium
+						fusce.
 					</p>
 				</div>
 			</section>
@@ -47,6 +113,32 @@ import Hero from '../components/Hero.astro';
 				<h2 class="section-title">Education</h2>
 				<div class="content">
 					<p>Corporis voluptates tenetur laudantium.</p>
+					<div class="gallery">
+						<Grid variant="small">
+							{
+								[
+									{ brand: "React", icon: "react" },
+									{ brand: "NextJs", icon: "nextjs" },
+									{ brand: "Amazon", icon: "aws" },
+									{ brand: "Angular", icon: "angular" },
+									{ brand: "Nodejs", icon: "node" },
+									{ brand: "Google", icon: "gcp" },
+								].map(({ brand, icon }) => (
+									<li class="mention-card">
+										<Icon
+											icon={
+												icon as keyof typeof iconPaths
+											}
+											color="var(--accent-regular)"
+											size="2.5rem"
+											gradient
+										/>{" "}
+										<p>{brand}</p>
+									</li>
+								))
+							}
+						</Grid>
+					</div>
 				</div>
 			</section>
 			<section>
@@ -62,6 +154,22 @@ import Hero from '../components/Hero.astro';
 </BaseLayout>
 
 <style>
+	.info {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.title {
+		opacity: .8;
+    text-transform: capitalize;
+	font-size: var(--text-lg);
+	}
+	.value {
+		font-weight: 600;
+		font-size: var(--text-base);
+		color: var(--gradient-stop-3)
+		
+	}
 	.about {
 		display: flex;
 		flex-direction: column;
@@ -91,6 +199,10 @@ import Hero from '../components/Hero.astro';
 		grid-column: 2 / 4;
 	}
 
+	.personal-info {
+		display: flex;
+	}
+
 	.content :global(a) {
 		text-decoration: 1px solid underline transparent;
 		text-underline-offset: 0.25em;
@@ -106,6 +218,12 @@ import Hero from '../components/Hero.astro';
 		.about {
 			display: grid;
 			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.info {
+			flex-direction: row;
+			gap: 1rem;
+			align-items: center;
 		}
 
 		.about > :global(:first-child) {

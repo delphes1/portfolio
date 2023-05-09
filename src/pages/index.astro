@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 
 // Layout import — provides basic page elements: <head>, <nav>, <footer> etc.
 import BaseLayout from '../layouts/BaseLayout.astro';
-
+import type { iconPaths } from '../components/IconPaths';
 // Component Imports
 import CallToAction from '../components/CallToAction.astro';
 import Grid from '../components/Grid.astro';
@@ -30,14 +30,15 @@ const projects = (await getCollection('work'))
 		<div class="wrapper stack gap-8 lg:gap-20">
 			<header class="hero">
 				<Hero
-					title="Hello, my name is Jeanine White"
-					tagline="I am a Creative Developer who is currently based in Portland, Oregon."
+					title="Hello, my name is Delphes Jabri"
+					tagline="I am a Developer who is currently based in Toulouse, France."
 					align="start"
 				>
 					<div class="roles">
 						<Pill><Icon icon="code" size="1.33em" /> Developer</Pill>
-						<Pill><Icon icon="microphone-stage" size="1.33em" /> Speaker</Pill>
-						<Pill><Icon icon="pencil-line" size="1.33em" /> Writer</Pill>
+						<Pill><Icon icon="com" size="1.33em" /> Teamwork</Pill>
+						<Pill> <Icon icon="agility" size="1.33em" /> Agility
+						</Pill>
 					</div>
 				</Hero>
 
@@ -45,7 +46,7 @@ const projects = (await getCollection('work'))
 					alt="Jeanine White smiling in a red plaid shirt and tortoise shell glasses"
 					width="480"
 					height="620"
-					src="/assets/portrait.jpg"
+					src="/assets/pp_10.png"
 				/>
 			</header>
 
@@ -56,7 +57,7 @@ const projects = (await getCollection('work'))
 			<section class="section with-background with-cta">
 				<header class="section-header stack gap-2 lg:gap-4">
 					<h3>Selected Work</h3>
-					<p>Take a look below at some of my featured work for clients from the past few years.</p>
+					<p>Take a look below at some of my featured work from the past few years.</p>
 				</header>
 
 				<div class="gallery">
@@ -81,19 +82,24 @@ const projects = (await getCollection('work'))
 
 			<section class="section with-background bg-variant">
 				<header class="section-header stack gap-2 lg:gap-4">
-					<h3>Mentions</h3>
+					<h3>Development Tools</h3>
 					<p>
-						I have been fortunate enough to recieve praise for my work in several publications. Take
-						a look below to learn more.
+						Frameworks and tools that help me create high-performing and innovative applications.
 					</p>
 				</header>
 
 				<div class="gallery">
 					<Grid variant="small">
 						{
-							['Medium', 'BuzzFeed', 'The Next Web', 'awwwards.', 'TechCrunch'].map((brand) => (
+							[
+							{brand: 'React', icon: "react"},
+							{brand: 'NextJs', icon: "nextjs"}, 
+							{brand: 'Amazon', icon: "aws"},
+							{brand: 'Angular', icon: "angular"},
+							{brand: 'Nodejs', icon: "node"},
+							{brand: 'Google', icon: "gcp"}].map(({brand, icon}) => (
 								<li class="mention-card">
-									<p>{brand}</p>
+									<Icon icon={icon as keyof typeof iconPaths} color="var(--accent-regular)" size="2.5rem" gradient /> <p>{brand}</p>
 								</li>
 							))
 						}
@@ -119,7 +125,7 @@ const projects = (await getCollection('work'))
 	}
 
 	.hero img {
-		aspect-ratio: 5 / 4;
+		aspect-ratio: 4 / 4;
 		object-fit: cover;
 		object-position: top;
 		border-radius: 1.5rem;
@@ -234,6 +240,7 @@ const projects = (await getCollection('work'))
 		justify-content: center;
 		align-items: center;
 		text-align: center;
+		gap: 1rem;
 		border: 1px solid var(--gray-800);
 		border-radius: 1.5rem;
 		color: var(--gray-300);
