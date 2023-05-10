@@ -1,16 +1,14 @@
 ---
 title: Digital Twin
-publishDate: 2023-05-10 00:00:00
+publishDate: 2023-06-20 00:00:00
 img: /assets/digital_twin.jpg
 img_alt: Iridescent ripples of a bright blue and pink liquid
 description: |
   The digital twin will allow for real-time simulation and visualization of the assembly line, improving efficiency and reducing errors.
 tags:
   - Monitoring
-  - Dev
   - Innovation
   - Real-time
-  - Overview
 ---
 
 ## Digital Twin
